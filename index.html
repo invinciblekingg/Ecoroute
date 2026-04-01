@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VitaSense AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#hero">
+        <span class="brand-mark"></span>
+        <span>VitaSense AI</span>
+      </a>
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav" id="site-nav">
+        <a href="#platform">Platform</a>
+        <a href="#assessment">Assessment</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#assistant">Assistant</a>
+        <a href="#network">Care Finder</a>
+      </nav>
+      <div class="topbar-actions">
+        <span class="topbar-status">Launch-grade prototype</span>
+        <button class="ghost-button" data-action="book-demo">Book Demo</button>
+      </div>
+    </header>
+
+    <nav class="mobile-dock" aria-label="Quick navigation">
+      <a href="#hero">Home</a>
+      <a href="#assessment">Assess</a>
+      <a href="#assistant">Assistant</a>
+      <a href="#network">Care</a>
+    </nav>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Predict. Prevent. Protect.</p>
+          <h1>Preventive healthcare that feels intelligent, calm, and immediate.</h1>
+          <p class="hero-text">
+            VitaSense AI transforms lifestyle signals into clear risk insights, realistic action plans,
+            and nearby care support before small warnings become larger problems.
+          </p>
+          <div class="hero-actions">
+            <button class="primary-button" data-scroll-target="#assessment">Check Your Health Risk</button>
+            <button class="secondary-button" data-scroll-target="#dashboard">Explore Dashboard</button>
+          </div>
+          <div class="hero-ribbon">
+            <span>AI prevention engine</span>
+            <span>assistant triage</span>
+            <span>care routing</span>
+          </div>
+          <ul class="hero-metrics">
+            <li>
+              <strong>91%</strong>
+              <span>users understand their risk snapshot in under 2 minutes</span>
+            </li>
+            <li>
+              <strong>24/7</strong>
+              <span>mental wellness support with daily guided check-ins</span>
+            </li>
+            <li>
+              <strong>+18%</strong>
+              <span>projected improvement after consistent habit changes</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-panel reveal">
+          <div class="orb orb-a"></div>
+          <div class="orb orb-b"></div>
+          <div class="glass-card pulse-card">
+            <div class="panel-header">
+              <span><span class="status-dot"></span>AI Health Pulse</span>
+              <span class="badge">Live preview</span>
+            </div>
+            <div class="score-ring">
+              <svg viewBox="0 0 120 120" aria-hidden="true">
+                <circle cx="60" cy="60" r="46" class="ring-base"></circle>
+                <circle cx="60" cy="60" r="46" class="ring-progress" id="hero-ring"></circle>
+              </svg>
+              <div>
+                <strong id="hero-score">78</strong>
+                <span>Health Score</span>
+              </div>
+            </div>
+            <div class="signal-grid">
+              <article>
+                <span>Heart risk</span>
+                <strong id="hero-heart-risk">21%</strong>
+              </article>
+              <article>
+                <span>Sleep quality</span>
+                <strong id="hero-sleep">6.8h</strong>
+              </article>
+              <article>
+                <span>Stress trend</span>
+                <strong id="hero-stress">Moderate</strong>
+              </article>
+              <article>
+                <span>Recommended next step</span>
+                <strong id="hero-next-step">Cardio x3/week</strong>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="platform" id="platform">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Platform Flow</p>
+          <h2>Built around the moments that matter most in preventive care.</h2>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <span class="feature-index">01</span>
+            <h3>Guided onboarding</h3>
+            <p>Users move through a smooth, multi-step health intake covering BMI, sleep, habits, family history, and daily routines.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-index">02</span>
+            <h3>Risk prediction engine</h3>
+            <p>AI surfaces disease risk probabilities, confidence scores, and time-based patterns in language users can understand fast.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-index">03</span>
+            <h3>Actionable dashboard</h3>
+            <p>Health score, trend visuals, smart alerts, and personalized recommendations turn raw data into next steps.</p>
+          </article>
+          <article class="feature-card reveal">
+            <span class="feature-index">04</span>
+            <h3>Mental and physical support</h3>
+            <p>Daily mood tracking, supportive AI check-ins, and habit guidance keep the experience human and consistent.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="assessment-section" id="assessment">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Interactive Assessment</p>
+          <h2>Run a simulated intake and watch the product update in real time.</h2>
+        </div>
+
+        <div class="assessment-grid">
+          <form class="glass-card assessment-form reveal" id="risk-form">
+            <div class="card-topline">
+              <span>Health intake</span>
+              <span class="badge">MVP flow</span>
+            </div>
+            <div class="form-grid">
+              <label>
+                <span>Age</span>
+                <input type="number" min="10" max="100" name="age" value="29" />
+              </label>
+              <label>
+                <span>Weight (kg)</span>
+                <input type="number" min="30" max="200" step="0.1" name="weight" value="72" />
+              </label>
+              <label>
+                <span>Height (cm)</span>
+                <input type="number" min="120" max="230" step="0.1" name="height" value="172" />
+              </label>
+              <label>
+                <span>Sleep (hours)</span>
+                <input type="number" min="3" max="12" step="0.1" name="sleep" value="6.8" />
+              </label>
+              <label>
+                <span>Exercise / week</span>
+                <input type="number" min="0" max="14" name="exercise" value="2" />
+              </label>
+              <label>
+                <span>Water (L/day)</span>
+                <input type="number" min="0.5" max="6" step="0.1" name="water" value="2.1" />
+              </label>
+              <label>
+                <span>Daily steps</span>
+                <input type="number" min="1000" max="30000" step="100" name="steps" value="6600" />
+              </label>
+              <label>
+                <span>Resting heart rate</span>
+                <input type="number" min="45" max="120" name="restingHeartRate" value="78" />
+              </label>
+              <label>
+                <span>Systolic BP</span>
+                <input type="number" min="90" max="180" name="systolic" value="124" />
+              </label>
+              <label>
+                <span>Daily calories</span>
+                <input type="number" min="1000" max="4500" step="50" name="calories" value="2100" />
+              </label>
+              <label>
+                <span>Diet type</span>
+                <select name="diet">
+                  <option value="balanced" selected>Balanced</option>
+                  <option value="processed">Processed</option>
+                  <option value="vegetarian">Vegetarian</option>
+                  <option value="high-protein">High protein</option>
+                </select>
+              </label>
+              <label>
+                <span>Stress level</span>
+                <select name="stress">
+                  <option value="low">Low</option>
+                  <option value="moderate" selected>Moderate</option>
+                  <option value="high">High</option>
+                </select>
+              </label>
+              <label>
+                <span>Smoking</span>
+                <select name="smoking">
+                  <option value="no" selected>No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </label>
+              <label>
+                <span>Alcohol use</span>
+                <select name="alcohol">
+                  <option value="none">None</option>
+                  <option value="low" selected>Low</option>
+                  <option value="moderate">Moderate</option>
+                  <option value="high">High</option>
+                </select>
+              </label>
+              <label>
+                <span>Family history</span>
+                <select name="history">
+                  <option value="no">None noted</option>
+                  <option value="yes" selected>Present</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="primary-button">Generate Risk Snapshot</button>
+              <button type="button" class="secondary-button" id="download-report">Download Report</button>
+            </div>
+          </form>
+
+          <article class="glass-card intake-summary reveal">
+            <div class="card-topline">
+              <span>Current profile</span>
+              <span class="badge badge-good" id="confidence-badge">Confidence 88%</span>
+            </div>
+            <div class="summary-stack">
+              <div>
+                <span>BMI</span>
+                <strong id="bmi-value">24.3</strong>
+              </div>
+              <div>
+                <span>Primary focus</span>
+                <strong id="primary-focus">Sleep recovery</strong>
+              </div>
+              <div>
+                <span>Recommended routine</span>
+                <strong id="routine-text">Walk 30 mins, 3x cardio, low sugar dinners</strong>
+              </div>
+            </div>
+            <div class="alert-card" id="risk-alert">
+              Moderate risk detected. Improving sleep consistency is your fastest high-impact change.
+            </div>
+            <div class="assessment-meta">
+              <article class="mini-panel">
+                <span class="mini-label">Resilience</span>
+                <strong id="resilience-score">71</strong>
+                <p id="resilience-copy">A stable base, but stress and sleep are still eroding recovery.</p>
+              </article>
+              <article class="mini-panel">
+                <span class="mini-label">Readiness</span>
+                <strong id="readiness-score">64</strong>
+                <p id="readiness-copy">The profile is coachable with habit changes this week.</p>
+              </article>
+            </div>
+            <div class="scenario-grid" id="scenario-grid">
+              <article class="scenario-card active" data-scenario="baseline">
+                <span>Current lifestyle</span>
+                <strong>78</strong>
+                <p>Current baseline</p>
+              </article>
+              <article class="scenario-card" data-scenario="recovery">
+                <span>Recovery sprint</span>
+                <strong>86</strong>
+                <p>+8</p>
+              </article>
+              <article class="scenario-card" data-scenario="reset">
+                <span>Habit reset</span>
+                <strong>90</strong>
+                <p>+12</p>
+              </article>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section" id="dashboard">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Smart Dashboard</p>
+          <h2>A startup-grade interface that makes health data feel useful, not overwhelming.</h2>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="glass-card dashboard-main reveal">
+            <div class="card-topline">
+              <span>Weekly Health Summary</span>
+              <span class="badge badge-warm" id="attention-badge">High attention area</span>
+            </div>
+            <div class="chart-area">
+              <div class="chart-axis">
+                <span>Mon</span>
+                <span>Tue</span>
+                <span>Wed</span>
+                <span>Thu</span>
+                <span>Fri</span>
+                <span>Sat</span>
+                <span>Sun</span>
+              </div>
+              <div class="chart-bars" id="chart-bars">
+                <span style="--size: 56%"></span>
+                <span style="--size: 61%"></span>
+                <span style="--size: 70%"></span>
+                <span style="--size: 63%"></span>
+                <span style="--size: 79%"></span>
+                <span style="--size: 68%"></span>
+                <span style="--size: 84%"></span>
+              </div>
+            </div>
+            <p class="insight-copy" id="insight-copy">Improvement is strongest when sleep consistency reaches 7.5 hours and exercise frequency stays above three sessions per week.</p>
+          </article>
+
+          <article class="glass-card reveal">
+            <div class="card-topline">
+              <span>Predicted risk mix</span>
+              <span class="badge">Live model</span>
+            </div>
+            <ul class="risk-list" id="risk-list">
+              <li><span>Sleep burnout</span><strong id="risk-burnout">44%</strong></li>
+              <li><span>Type 2 diabetes</span><strong id="risk-diabetes">32%</strong></li>
+              <li><span>Heart disease</span><strong id="risk-heart">21%</strong></li>
+            </ul>
+          </article>
+
+          <article class="glass-card reveal">
+            <div class="card-topline">
+              <span>Behavior simulation</span>
+              <span class="badge badge-good">Optimistic</span>
+            </div>
+            <p class="scenario-text" id="scenario-text">If hydration improves and smoking remains at zero, projected cardiovascular risk drops by 8% over the next 12 weeks.</p>
+            <button class="secondary-button inline-action" id="simulate-improvement">Simulate Better Habits</button>
+          </article>
+
+          <article class="glass-card tracker-card reveal">
+            <div class="card-topline">
+              <span>Daily tracker</span>
+              <span class="badge">Today</span>
+            </div>
+            <div class="tracker-list">
+              <div><label>Water intake</label><progress max="100" value="72" id="water-progress"></progress><span id="water-label">2.1L</span></div>
+              <div><label>Step count</label><progress max="100" value="66" id="steps-progress"></progress><span id="steps-label">6,600</span></div>
+              <div><label>Sleep goal</label><progress max="100" value="84" id="sleep-progress"></progress><span id="sleep-label">7.1h</span></div>
+            </div>
+            <div class="tracker-actions">
+              <button class="ghost-button" data-track="water">+ Water</button>
+              <button class="ghost-button" data-track="steps">+ Steps</button>
+              <button class="ghost-button" data-track="sleep">+ Sleep</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="insights-grid">
+          <article class="glass-card reveal">
+            <div class="card-topline">
+              <span>Biometric highlights</span>
+              <span class="badge">Signals</span>
+            </div>
+            <div class="biometric-grid" id="biometric-grid">
+              <div class="bio-pill"><span>BMI</span><strong>24.3</strong></div>
+              <div class="bio-pill"><span>Resting HR</span><strong>78 bpm</strong></div>
+              <div class="bio-pill"><span>Blood pressure</span><strong>124 systolic</strong></div>
+              <div class="bio-pill"><span>Recovery</span><strong>62</strong></div>
+            </div>
+          </article>
+          <article class="glass-card reveal">
+            <div class="card-topline">
+              <span>Action queue</span>
+              <span class="badge badge-good">Priority</span>
+            </div>
+            <ul class="recommendation-list" id="recommendation-list">
+              <li>Bring sleep to at least 7.5 hours for the next 10 days.</li>
+              <li>Lock in 30 minutes of cardio or brisk walking 4 times each week.</li>
+              <li>Shift dinner toward lower sugar, higher fiber meals on weekdays.</li>
+              <li>Use one structured decompression routine within 90 minutes of bedtime.</li>
+            </ul>
+          </article>
+          <article class="glass-card reveal care-path-card">
+            <div class="card-topline">
+              <span>Care path</span>
+              <span class="badge">Next step</span>
+            </div>
+            <strong id="care-path-title">Preventive clinician follow-up</strong>
+            <p id="care-path-copy">Sleep burnout is the top signal and should guide the next care decision.</p>
+            <div class="care-path-meta">
+              <span id="care-path-eta">Within 7 days</span>
+              <span id="care-path-action">Carry this summary into a preventive consultation or counselor check-in.</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="assistant-section" id="assistant">
+        <div class="assistant-copy reveal">
+          <p class="eyebrow">Mental Health Assistant</p>
+          <h2>An AI companion for calmer habits, honest check-ins, and daily support.</h2>
+          <p>
+            VitaSense balances medical-style insights with emotionally aware guidance for stress,
+            anxiety, and reflection. The tone is supportive, structured, and easy to return to each day.
+          </p>
+          <div class="assistant-actions">
+            <button class="primary-button" id="simulate-checkin">Run Daily Check-In</button>
+            <button class="secondary-button" id="suggest-plan">Build Recovery Plan</button>
+            <span class="micro-note">Mood tracking, journaling prompts, breathing routines, and supportive nudges built in.</span>
+          </div>
+
+          <div class="assistant-tools">
+            <div class="mode-row" role="group" aria-label="Assistant mode">
+              <button class="mode-chip active" data-mode="coach">Coach</button>
+              <button class="mode-chip" data-mode="recovery">Recovery</button>
+              <button class="mode-chip" data-mode="focus">Focus</button>
+              <button class="mode-chip" data-mode="sleep">Sleep</button>
+              <button class="mode-chip" data-mode="triage">Triage</button>
+            </div>
+            <div class="mood-row" role="group" aria-label="Mood quick select">
+              <button class="mood-chip active" data-mood="calm">Calm</button>
+              <button class="mood-chip" data-mood="stressed">Stressed</button>
+              <button class="mood-chip" data-mood="anxious">Anxious</button>
+              <button class="mood-chip" data-mood="tired">Tired</button>
+            </div>
+            <label class="journal-box">
+              <span>Journal a quick note</span>
+              <textarea id="journal-input" rows="4" placeholder="I felt distracted after lunch and skipped my walk..."></textarea>
+            </label>
+            <div class="assistant-quick-actions">
+              <button class="ghost-button" data-prompt="breathing">Breathing</button>
+              <button class="ghost-button" data-prompt="focus">Focus reset</button>
+              <button class="ghost-button" data-prompt="sleep">Sleep tip</button>
+              <button class="ghost-button" id="send-journal">Send to Assistant</button>
+            </div>
+            <label class="journal-box">
+              <span>Ask the assistant anything</span>
+              <textarea id="assistant-input" rows="3" placeholder="I'm feeling mentally drained after work and worried about my sleep this week..."></textarea>
+            </label>
+            <div class="assistant-quick-actions">
+              <button class="primary-button" id="assistant-send">Send Message</button>
+              <button class="secondary-button" id="assistant-triage">Run Care Triage</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-shell reveal">
+          <div class="chat-thread" id="chat-thread">
+            <div class="chat-message ai">
+              <span class="chat-label">VitaSense AI</span>
+              <p>How has your energy felt today? I noticed sleep dipped a bit last night, so we can keep this gentle.</p>
+            </div>
+            <div class="chat-message user">
+              <span class="chat-label">You</span>
+              <p>A little stressed and distracted. I skipped my walk too.</p>
+            </div>
+            <div class="chat-message ai accent" id="checkin-response">
+              <span class="chat-label">VitaSense AI</span>
+              <p>Let's reset with a 4-minute breathing routine, a short walk after dinner, and a lighter caffeine cutoff today.</p>
+            </div>
+          </div>
+
+          <div class="assistant-panels">
+            <article class="mini-panel">
+              <span class="mini-label">Mood trend</span>
+              <strong id="mood-trend">Stable and calm</strong>
+              <p id="mood-detail">Today looks manageable. Keep energy steady with hydration and a short evening walk.</p>
+            </article>
+            <article class="mini-panel">
+              <span class="mini-label">Next best action</span>
+              <strong id="next-action-text">Try a 4-minute breathing reset at 6:30 PM.</strong>
+              <button class="ghost-button" id="schedule-reminder">Schedule Reminder</button>
+            </article>
+            <article class="mini-panel">
+              <span class="mini-label">Session state</span>
+              <strong id="assistant-session-label">Coach mode active</strong>
+              <p id="assistant-session-copy">Turn 1 of your daily support session is now live.</p>
+            </article>
+          </div>
+          <div class="assistant-results">
+            <article class="mini-panel">
+              <span class="mini-label">Assistant summary</span>
+              <strong id="assistant-headline">You're in a workable place today.</strong>
+              <p id="assistant-summary">Given your current recovery focus and mood state, the best next move is a short, specific recovery action rather than a big reset.</p>
+            </article>
+            <article class="mini-panel">
+              <span class="mini-label">Coping tools</span>
+              <ul class="tool-list" id="tool-list">
+                <li>Inhale 4, hold 4, exhale 6 for four rounds.</li>
+                <li>Write one pressure, one win, and one next small action.</li>
+                <li>Take a 6-minute walk or stretch before re-engaging.</li>
+              </ul>
+            </article>
+            <article class="mini-panel">
+              <span class="mini-label">Care plan</span>
+              <ul class="tool-list" id="care-plan-list">
+                <li>Protect the momentum with hydration before lunch.</li>
+                <li>Keep one short walk after your heaviest work block.</li>
+                <li>Use a low-friction wind-down routine tonight.</li>
+              </ul>
+            </article>
+            <article class="mini-panel">
+              <span class="mini-label">Clinical guardrail</span>
+              <strong id="assistant-warning-title">No urgent signal</strong>
+              <p id="assistant-warning-copy">This assistant supports wellness habits, but it is not emergency care or a diagnosis tool.</p>
+            </article>
+          </div>
+          <div class="assistant-ops">
+            <article class="mini-panel">
+              <span class="mini-label">Checklist</span>
+              <ul class="tool-list interactive-list" id="assistant-checklist">
+                <li>Hydrate before the next work block</li>
+                <li>Take a 6-minute walk or stretch reset</li>
+                <li>Protect the final hour before sleep</li>
+              </ul>
+            </article>
+            <article class="mini-panel">
+              <span class="mini-label">Protocols</span>
+              <ul class="tool-list" id="assistant-protocols">
+                <li>Pick one habit you will protect even on messy days.</li>
+                <li>Remove one blocker that makes healthy behavior harder than it should be.</li>
+                <li>Reserve 20 minutes before bed for low-stimulation recovery.</li>
+              </ul>
+            </article>
+            <article class="mini-panel">
+              <span class="mini-label">Reminders & resources</span>
+              <ul class="tool-list" id="assistant-reminders">
+                <li>6:30 PM: Recovery check-in</li>
+              </ul>
+              <ul class="tool-list compact" id="assistant-resources">
+                <li>Recovery routine</li>
+                <li>Care finder</li>
+                <li>Behavior loop</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="network-section" id="network">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Nearby Care Finder</p>
+          <h2>When risk spikes, users can move from insight to care without leaving the platform.</h2>
+        </div>
+
+        <div class="network-grid">
+          <div class="map-card reveal">
+            <div class="map-grid">
+              <button class="pin pin-a" data-care="City Hospital">City Hospital</button>
+              <button class="pin pin-b" data-care="Wellness Clinic">Wellness Clinic</button>
+              <button class="pin pin-c" data-care="Cardio Care">Cardio Care</button>
+            </div>
+          </div>
+          <div class="care-list reveal">
+            <article class="care-item">
+              <div>
+                <h3>City Hospital</h3>
+                <p>24/7 emergency, diagnostics, cardiology</p>
+              </div>
+              <button class="ghost-button" data-care-action="directions" data-care="City Hospital">Directions</button>
+            </article>
+            <article class="care-item">
+              <div>
+                <h3>Wellness Clinic</h3>
+                <p>Preventive consultations, dietitian support</p>
+              </div>
+              <button class="ghost-button" data-care-action="book" data-care="Wellness Clinic">Book</button>
+            </article>
+            <article class="care-item">
+              <div>
+                <h3>MindCare Center</h3>
+                <p>Stress therapy, anxiety counseling, check-ins</p>
+              </div>
+              <button class="ghost-button" data-care-action="connect" data-care="MindCare Center">Connect</button>
+            </article>
+            <article class="care-detail" id="care-detail">
+              <span class="mini-label">Selected provider</span>
+              <strong id="care-name">City Hospital</strong>
+              <p id="care-copy">Fastest route: 12 minutes away. Best match for elevated cardiovascular risk and urgent diagnostics.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="roadmap-section">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Product Roadmap</p>
+          <h2>MVP-ready for a hackathon, with a credible path to a larger health platform.</h2>
+        </div>
+        <div class="roadmap-grid">
+          <article class="roadmap-card reveal">
+            <h3>MVP</h3>
+            <ul>
+              <li>Risk intake form</li>
+              <li>Prediction dashboard</li>
+              <li>AI support assistant</li>
+              <li>Nearby care explorer</li>
+            </ul>
+          </article>
+          <article class="roadmap-card reveal">
+            <h3>Advanced</h3>
+            <ul>
+              <li>PDF report parsing</li>
+              <li>Wearables integration</li>
+              <li>Trend simulation engine</li>
+              <li>Doctor consultation layer</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <div class="modal hidden" id="demo-modal" aria-hidden="true">
+    <div class="modal-backdrop" data-close-modal="demo-modal"></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="demo-modal-title">
+      <div class="card-topline">
+        <span>Demo Request</span>
+        <button class="ghost-button modal-close" data-close-modal="demo-modal">Close</button>
+      </div>
+      <h3 id="demo-modal-title">VitaSense AI is ready for a polished product demo.</h3>
+      <p>
+        This prototype now includes a working intake flow, simulated risk updates, interactive assistant,
+        tracker controls, and care finder actions. It is structured to pitch well in a hackathon or startup demo.
+      </p>
+      <button class="primary-button" data-scroll-target="#assessment" data-close-modal="demo-modal">Launch Assessment</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
