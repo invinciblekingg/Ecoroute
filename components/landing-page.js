@@ -98,6 +98,8 @@ function ProductCard({ product }) {
 }
 
 function LiveActivityStrip() {
+  const loopItems = liveActivity.concat(liveActivity);
+
   return (
     <div className="activity-strip">
       <div className="activity-strip-label">
@@ -105,13 +107,26 @@ function LiveActivityStrip() {
         <strong>Signals moving through the system right now</strong>
       </div>
       <div className="activity-marquee">
-        {liveActivity.map((item) => (
-          <article className="activity-pill" key={item.title}>
-            <span>{item.time}</span>
-            <strong>{item.title}</strong>
-            <p>{item.detail}</p>
-          </article>
-        ))}
+        <div className="activity-track">
+          <div className="activity-group">
+            {loopItems.map((item, index) => (
+              <article className="activity-pill" key={`${item.title}-${index}`}>
+                <span>{item.time}</span>
+                <strong>{item.title}</strong>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+          </div>
+          <div className="activity-group" aria-hidden="true">
+            {loopItems.map((item, index) => (
+              <article className="activity-pill" key={`${item.title}-clone-${index}`}>
+                <span>{item.time}</span>
+                <strong>{item.title}</strong>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
