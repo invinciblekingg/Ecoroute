@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 import CountUp from "./count-up";
 import DemoModal from "./demo-modal";
 import Navbar from "./navbar";
@@ -17,6 +18,7 @@ const heroRotations = [
 
 function RotatingHeroText() {
   const [index, setIndex] = useState(0);
+  const wordRef = useRef(null);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -26,11 +28,37 @@ function RotatingHeroText() {
     return () => window.clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const element = wordRef.current;
+
+    if (!element) {
+      return;
+    }
+
+    gsap.fromTo(
+      element,
+      {
+        y: 18,
+        opacity: 0,
+        scale: 0.98,
+        filter: "blur(10px)",
+      },
+      {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 0.85,
+        ease: "power3.out",
+      }
+    );
+  }, [index]);
+
   const current = heroRotations[index];
 
   return (
     <span className="hero-rotator" aria-live="polite">
-      <span key={current.text} className="hero-rotator-word" style={{ "--hero-glow": current.glow }}>
+      <span ref={wordRef} className="hero-rotator-word" style={{ "--hero-glow": current.glow }}>
         {current.text}
       </span>
     </span>
