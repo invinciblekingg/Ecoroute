@@ -6,8 +6,10 @@ import { navigationProducts } from "../lib/site-data";
 
 function LogoMark() {
   return (
-    <svg viewBox="0 0 16 16" aria-hidden="true">
-      <path d="M8 2L13 5V11L8 14L3 11V5L8 2Z" fill="currentColor" />
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2C8 5 5.5 8.6 5.5 12.2C5.5 17 9 21 12 21C15 21 18.5 17 18.5 12.2C18.5 8.6 16 5 12 2Z" fill="currentColor" />
+      <path d="M9 13.1C10.3 11.5 11.6 10.7 13.2 10.1C14 9.8 14.8 9.7 15.7 9.7" stroke="white" strokeWidth="1.4" strokeLinecap="round" />
+      <path d="M10 16.2C10.7 14.8 11.9 13.6 13.4 12.9" stroke="white" strokeWidth="1.4" strokeLinecap="round" />
     </svg>
   );
 }
@@ -50,13 +52,13 @@ export default function Navbar({ onOpenDemo }) {
   const closeMobile = () => setMobileOpen(false);
 
   return (
-    <header className="navbar-shell" ref={navRef}>
-      <div className="navbar">
+    <header className="topbar-shell" ref={navRef}>
+      <div className="topbar">
         <Link className="brand" href="/" onClick={() => setMenuOpen(false)}>
           <span className="brand-mark">
             <LogoMark />
           </span>
-          <span>Kyle.ai</span>
+          <span>EcoRoute AI</span>
         </Link>
 
         <nav className="desktop-nav" aria-label="Primary">
@@ -66,13 +68,13 @@ export default function Navbar({ onOpenDemo }) {
               className={`nav-link ${menuOpen ? "active" : ""}`}
               onClick={() => setMenuOpen((value) => !value)}
               aria-expanded={menuOpen}
-              aria-controls="platform-menu"
+              aria-controls="module-menu"
             >
-              Platform
-              <span className="caret">⌄</span>
+              Modules
+              <span className="caret">v</span>
             </button>
 
-            <div id="platform-menu" className={`platform-menu ${menuOpen ? "open" : ""}`}>
+            <div id="module-menu" className={`platform-menu ${menuOpen ? "open" : ""}`}>
               {navigationProducts.map((product) => (
                 <Link
                   key={product.id}
@@ -87,23 +89,26 @@ export default function Navbar({ onOpenDemo }) {
             </div>
           </div>
 
-          <a className="nav-link" href="#suite">
-            Solutions
+          <a className="nav-link" href="#overview">
+            Overview
           </a>
-          <a className="nav-link" href="#pricing">
-            Pricing
+          <a className="nav-link" href="#modules">
+            Modules
           </a>
-          <a className="nav-link" href="#footer">
-            Integrations
+          <a className="nav-link" href="#operations">
+            Operations
+          </a>
+          <a className="nav-link" href="#impact">
+            Impact
           </a>
         </nav>
 
         <div className="nav-actions">
-          <a className="ghost-button" href="#footer">
-            Sign In
+          <a className="ghost-button" href="#pilot">
+            See pilot
           </a>
           <button type="button" className="primary-button" onClick={onOpenDemo}>
-            Get Started Free
+            Launch pilot
           </button>
           <button
             type="button"
@@ -121,7 +126,7 @@ export default function Navbar({ onOpenDemo }) {
 
       <div className={`mobile-drawer ${mobileOpen ? "open" : ""}`}>
         <div className="mobile-drawer-inner">
-          <div className="mobile-group-title">Platform</div>
+          <div className="mobile-group-title">Modules</div>
           {navigationProducts.map((product) => (
             <Link
               key={product.id}
@@ -135,14 +140,17 @@ export default function Navbar({ onOpenDemo }) {
 
           <div className="divider" />
 
-          <a className="mobile-link" href="#suite" onClick={closeMobile}>
-            Solutions
+          <a className="mobile-link" href="#overview" onClick={closeMobile}>
+            Overview
           </a>
-          <a className="mobile-link" href="#pricing" onClick={closeMobile}>
-            Pricing
+          <a className="mobile-link" href="#modules" onClick={closeMobile}>
+            Modules
           </a>
-          <a className="mobile-link" href="#footer" onClick={closeMobile}>
-            Integrations
+          <a className="mobile-link" href="#operations" onClick={closeMobile}>
+            Operations
+          </a>
+          <a className="mobile-link" href="#impact" onClick={closeMobile}>
+            Impact
           </a>
 
           <div className="divider" />
@@ -155,7 +163,7 @@ export default function Navbar({ onOpenDemo }) {
               onOpenDemo();
             }}
           >
-            Get Started Free
+            Launch pilot
           </button>
         </div>
       </div>

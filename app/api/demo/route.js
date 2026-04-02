@@ -1,12 +1,25 @@
 import { z } from "zod";
-import { saveDemoRequest } from "../../../lib/demo-store";
+import { createPilotRequest, listPilots } from "../../../lib/ecoroute-store";
+
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name is required"),
   email: z.string().trim().email("A valid email is required"),
-  company: z.string().trim().min(2, "Company is required"),
-  goal: z.string().trim().min(8, "Tell us a little more about your goal"),
+  company: z.string().trim().min(2, "City or organization is required"),
+  goal: z.string().trim().min(8, "Tell us a little more about your pilot"),
+  notes: z.string().trim().optional().default(""),
 });
+
+export async function GET() {
+  const pilots = await listPilots();
+  return Response.json({
+    ok: true,
+    count: pilots.length,
+    pilots,
+  });
+}
 
 export async function POST(request) {
   let payload;
@@ -18,23 +31,28 @@ export async function POST(request) {
   }
 
   const result = schema.safeParse(payload);
-
   if (!result.success) {
-    const errors = result.error.flatten().fieldErrors;
     return Response.json(
-      { ok: false, message: "Please check the form and try again.", errors },
+      {
+        ok: false,
+        message: "Please check the pilot form and try again.",
+        errors: result.error.flatten().fieldErrors,
+      },
       { status: 400 }
     );
   }
 
-  const saved = await saveDemoRequest({
+  const pilot = await createPilotRequest({
     ...result.data,
-    createdAt: new Date().toISOString(),
+    source: "demo-form",
   });
 
-  return Response.json({
-    ok: true,
-    message: "Your demo request was received.",
-    request: saved,
-  });
+  return Response.json(
+    {
+      ok: true,
+      message: "Your pilot request was received.",
+      pilot,
+    },
+    { status: 201 }
+  );
 }

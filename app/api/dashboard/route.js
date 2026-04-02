@@ -1,12 +1,13 @@
-import { getHealthData } from "../../../lib/ecoroute-store";
+import { getDashboardData } from "../../../lib/ecoroute-store";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const health = await getHealthData();
+  const dashboard = await getDashboardData();
   return Response.json({
     ok: true,
-    ...health,
+    dashboard,
+    summary: dashboard,
   });
 }

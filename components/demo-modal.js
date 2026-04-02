@@ -42,7 +42,7 @@ export default function DemoModal({ open, onClose }) {
     setFieldErrors({});
 
     try {
-      const response = await fetch("/api/demo", {
+      const response = await fetch("/api/pilots", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -58,11 +58,11 @@ export default function DemoModal({ open, onClose }) {
       }
 
       setStatus("success");
-      setMessage("Request sent. We saved your details and will follow up shortly.");
+      setMessage("Pilot request sent. We saved your details and will follow up shortly.");
       setForm(initialState);
     } catch {
       setStatus("error");
-      setMessage("The demo service is temporarily unavailable.");
+      setMessage("The pilot request service is temporarily unavailable.");
     }
   }
 
@@ -75,19 +75,19 @@ export default function DemoModal({ open, onClose }) {
       <button type="button" className="modal-backdrop" onClick={onClose} aria-label="Close modal" />
       <div className="modal-card">
         <div className="modal-topline">
-          <span className="eyebrow">Book a demo</span>
+          <span className="eyebrow">Launch a pilot</span>
           <button type="button" className="modal-close" onClick={onClose} aria-label="Close">
-            ×
+            x
           </button>
         </div>
-        <h2 id="demo-title">See Kyle.ai in action</h2>
+        <h2 id="demo-title">See EcoRoute AI in action</h2>
         <p>
-          Send a request and we’ll save it through the Next.js backend so the form actually works end to end.
+          Send a pilot request and we will save it through the Next.js backend so the form works end to end.
         </p>
 
         <form className="demo-form" onSubmit={handleSubmit}>
           <label>
-            <span>Name</span>
+            <span>Your name</span>
             <input
               value={form.name}
               onChange={(event) => setForm((value) => ({ ...value, name: event.target.value }))}
@@ -108,7 +108,7 @@ export default function DemoModal({ open, onClose }) {
           </label>
 
           <label>
-            <span>Company</span>
+            <span>City / organization</span>
             <input
               value={form.company}
               onChange={(event) => setForm((value) => ({ ...value, company: event.target.value }))}
@@ -118,11 +118,12 @@ export default function DemoModal({ open, onClose }) {
           </label>
 
           <label className="full-width">
-            <span>What are you trying to improve?</span>
+            <span>What do you want to improve?</span>
             <textarea
               rows="4"
               value={form.goal}
               onChange={(event) => setForm((value) => ({ ...value, goal: event.target.value }))}
+              placeholder="Reduce backlog, optimize routes, improve reporting, or build a pilot demo."
             />
             {fieldErrors.goal ? <small>{fieldErrors.goal[0]}</small> : null}
           </label>
@@ -134,7 +135,7 @@ export default function DemoModal({ open, onClose }) {
               Cancel
             </button>
             <button type="submit" className="primary-button" disabled={status === "loading"}>
-              {status === "loading" ? "Sending..." : "Request Demo"}
+              {status === "loading" ? "Sending..." : "Request pilot"}
             </button>
           </div>
         </form>

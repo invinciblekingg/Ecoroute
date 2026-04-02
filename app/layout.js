@@ -14,9 +14,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "Kyle.ai - The Operating System for Autonomous Growth",
+  title: "EcoRoute AI - Smarter Waste, Cleaner Cities",
   description:
-    "A polished Next.js conversion of the Kyle.ai concept landing page with product detail routes and a live demo backend.",
+    "EcoRoute AI is a citizen-powered waste management platform with smart map reporting, AI triage, route optimization, and live municipal dashboards.",
 };
 
 export default function RootLayout({ children }) {
