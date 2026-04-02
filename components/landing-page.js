@@ -147,72 +147,6 @@ function LiveActivityStrip() {
   );
 }
 
-function HeroFlowChart() {
-  const flowNodes = [
-    { id: "growthlab", title: "GrowthLab", detail: "Constraints-aware planning", tone: "violet", x: "50%", y: "6%" },
-    { id: "creative", title: "Creative Studio", detail: "Competitive signals in", tone: "rose", x: "83%", y: "18%" },
-    { id: "project", title: "Project Manager", detail: "Role-based approvals", tone: "slate", x: "84%", y: "58%" },
-    { id: "rise", title: "RISE", detail: "Board-ready reporting", tone: "purple", x: "60%", y: "90%" },
-    { id: "circle", title: "Circle", detail: "Deterministic matching", tone: "cyan", x: "34%", y: "90%" },
-    { id: "seo", title: "AI-SEO", detail: "Brief-less content", tone: "amber", x: "9%", y: "58%" },
-    { id: "analytics", title: "Analytics", detail: "Live anomalies", tone: "blue", x: "10%", y: "18%" },
-  ];
-
-  return (
-    <div className="hero-flow-chart">
-      <div className="hero-flow-grid" />
-      <svg className="hero-flow-svg" viewBox="0 0 1000 620" preserveAspectRatio="none" aria-hidden="true">
-        <g className="hero-flow-svg-lines">
-          <line x1="500" y1="310" x2="500" y2="58" />
-          <line x1="500" y1="310" x2="830" y2="118" />
-          <line x1="500" y1="310" x2="860" y2="372" />
-          <line x1="500" y1="310" x2="670" y2="552" />
-          <line x1="500" y1="310" x2="330" y2="552" />
-          <line x1="500" y1="310" x2="150" y2="372" />
-          <line x1="500" y1="310" x2="145" y2="132" />
-        </g>
-      </svg>
-
-      <div className="hero-flow-center">
-        <span className="hero-flow-badge">KYLE.AI</span>
-        <div className="hero-flow-orb">OS</div>
-        <strong>Autonomous Growth Core</strong>
-        <p>Signals in. Decisions out. Every module learns from the others.</p>
-      </div>
-
-      {flowNodes.map((node) => (
-        <article
-          key={node.id}
-          className={`hero-flow-node tone-${node.tone}`}
-          style={{ left: node.x, top: node.y }}
-        >
-          <span>{node.title}</span>
-          <strong>{node.detail}</strong>
-        </article>
-      ))}
-
-      <aside className="hero-flow-insight hero-flow-insight-left">
-        <div className="hero-flow-insight-title">Live shifts</div>
-        <strong>$180k &rarr; Search</strong>
-        <p>Budget move approved</p>
-        <p>Creative fatigue detected on Meta UK</p>
-        <p>83% confidence for next 13 weeks</p>
-      </aside>
-
-      <aside className="hero-flow-insight hero-flow-insight-card">
-        <div className="hero-flow-insight-title">GrowthLab</div>
-        <strong>+18.4%</strong>
-        <span>ROAS delta</span>
-        <div className="hero-flow-mini-chart">
-          {[24, 38, 34, 46, 58, 62, 74].map((value, index) => (
-            <span key={value} style={{ height: `${value}%`, animationDelay: `${index * 90}ms` }} />
-          ))}
-        </div>
-      </aside>
-    </div>
-  );
-}
-
 export default function LandingPage() {
   const [demoOpen, setDemoOpen] = useState(false);
 
@@ -275,10 +209,6 @@ export default function LandingPage() {
               </ul>
             </Reveal>
           </div>
-
-          <Reveal className="hero-flow-wrap" delay={80}>
-            <HeroFlowChart />
-          </Reveal>
         </section>
 
         <LiveActivityStrip />
